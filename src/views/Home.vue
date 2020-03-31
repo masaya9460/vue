@@ -1,6 +1,7 @@
 <template>
     <div class="main">
         <p class="main__title">My Portfolio</p>
+        
     </div>
 </template>
 
