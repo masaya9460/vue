@@ -1,15 +1,18 @@
 <template>
 <div>
-  <Menu />
+  <!-- <Menu /> -->
+  <Todo />
 </div>
 </template>
 
 <script>
-import Menu from './components/Menu';
+// import Menu from './components/Menu';
+import Todo from './components/Todo';
 
 export default{
   components:{
-    Menu
+    Todo
+    // Menu
   }
 }
 </script>
