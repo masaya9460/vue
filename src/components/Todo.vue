@@ -1,22 +1,29 @@
 <template>
     <div>
         <h1>Todo List</h1>
+         
         <input type="text" v-model="newTask" v-on:keydown.enter="addTask">
         <input type="button" value="追加" v-on:click="addTask">
         <div class="list">
-            <ul>
+            <draggable element="ul">
                 <li v-for="item in list" :key="item.id">
                     <span v-bind:class="{ complete: item.isComplete }">{{ item.value }}</span>
                     <input type="button" value="達成" v-on:click="item.isComplete=true">
                     <input type="button" value="削除" v-on:click="deleteTasak(item)">
                 </li>
-            </ul>
+            </draggable>
         </div>
+        
     </div>
 </template>
     
 <script>
+import draggable from 'vuedraggable';
+
 export default {
+    components: {
+        draggable,
+    },
     data() {
         return {
             list: [
@@ -24,8 +31,9 @@ export default {
                { id: 2, value: "図書館に本を返す", isComplete: false },
                { id: 3, value: "宅急便を受け取る", isComplete: false }
             ],
-            newTask: "",
+            newTask:"",
             nextId:""
+            
         }
     } ,
     methods: {

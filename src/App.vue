@@ -1,17 +1,21 @@
 <template>
 <div>
   <!-- <Menu /> -->
-  <Todo />
+  <!-- <Todo /> -->
+  <Draggable />
+
 </div>
 </template>
 
 <script>
 // import Menu from './components/Menu';
-import Todo from './components/Todo';
+// import Todo from './components/Todo';
+import Draggable from './components/Draggable';
 
 export default{
   components:{
-    Todo
+    Draggable
+    // Todo
     // Menu
   }
 }
