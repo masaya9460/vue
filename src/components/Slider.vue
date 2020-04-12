@@ -1,21 +1,20 @@
 <template>
-<div id="MyFirstSlideshow">
+  <div id="MyFirstSlideshow">
     <div class="eg-slideshow">
-        <slide>
-            <h1>Hi there !</h1>
-            <h4>This is your first slideshow !</h4>
-        </slide>
-        <slide enter="bounceInRight" leave="fadeOut">
-            <h3>Hey modify me !</h3>
-            <p>Come on modify me ! If you are running the development server, you will see the changes take effect immediately
-            </p>
-        </slide>
-        <slide enter="fadeIn">
-            <h3>Want cool effects?</h3>
-            <p>Code your own, or try stealing for the other slideshows !</p>
-        </slide>
+      <slide>
+        <h1>Hi there !</h1>
+        <h4>This is your first slideshow !</h4>
+      </slide>
+      <slide enter="bounceInRight" leave="fadeOut">
+        <h3>Hey modify me !</h3>
+        <p>Come on modify me ! If you are running the development server, you will see the changes take effect immediately</p>
+      </slide>
+      <slide enter="fadeIn">
+        <h3>Want cool effects?</h3>
+        <p>Code your own, or try stealing for the other slideshows !</p>
+      </slide>
     </div>
-</div>
+  </div>
 </template>
 
 <script>

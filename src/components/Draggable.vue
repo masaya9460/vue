@@ -1,15 +1,13 @@
 <template>
-  <div>
-    <ul id="app">
- <button v-on:click="doAdd">追加</button>
- <draggable v-model="myList">
-   <li v-for="item in myList" :key="item.no">
-       {{item.name}}-(No.{{item.no}})
-       <span class="del" v-on:click="doDelete(item)">[削除]</span> 
-   </li>
- </draggable>
-</ul>
-  </div>
+  <ul id="app">
+    <button @click="doAdd">追加</button>
+    <draggable v-model="items">
+      <li v-for="item in items" :key="item.no">
+        {{item.name}}-(No.{{item.no}})
+        <span class="del" @click="doDelete(item)">[削除]</span> 
+      </li>
+    </draggable>
+  </ul>
 </template>
 
 <script>
@@ -23,41 +21,36 @@ export default {
   data() {
     return {
       items:[
-      {no:1, name:'キャベツ', categoryNo:'1'},
-      {no:2, name:'ステーキ', categoryNo:'2'},
-      {no:3, name:'リンゴ', categoryNo:'3'}
-    ],
-    newNo: ''
-    }
-  },
-  computed: {
-      myList: {
-         get() {
-        return this.items;
-      },
-      set(value) {
-        this.items = value;
-      }
+        {no:1, name:'キャベツ', categoryNo:'1'},
+        {no:2, name:'ステーキ', categoryNo:'2'},
+        {no:3, name:'リンゴ', categoryNo:'3'}
+      ],
+      newNo: ''
     }
   },
   methods: {
-    doAdd:function(){
-      let self = this;
-      let no = 0;
-      if(self.items.concat().length > 0){
-        no =  Math.max.apply(null,self.items.concat().map(function(item){return item.no;})) +1;
-        self.newNo = self.newNo < no ? no:self.newNo;
+    /**
+     * リストに追加
+     */
+    doAdd() {
+      let no = 1
+      if(this.items.length > 0){
+        no = Math.max.apply(null, this.items.map(item => item.no)) + 1
       }
+      this.newNo = this.newNo < no ? no : this.newNo
       this.items.push(
         {
           no: this.newNo,
-          name:'追加リスト'+ this.newNo,
-          categoryNo:''+ self.newNo 
+          name: '追加リスト' + this.newNo,
+          categoryNo: '' + this.newNo
         }
-      ); 
+      )
     },
-    doDelete (item) {
-      this.items = this.list.filter(l => l !==item)
+    /**
+     * リストから削除
+     */
+    doDelete(item) {
+      this.items = this.items.filter(l => l !== item)
     }
   }
 }
@@ -65,7 +58,7 @@ export default {
 
 <style>
 .app {
-  padding : 15px;
+  padding: 15px;
 }
 
 .box {
@@ -81,7 +74,7 @@ export default {
 }
 
 li {
-  cursor:pointer;
+  cursor: pointer;
   padding: 10px;
   border: solid #ddd 1px;
   background-color: #fff;
